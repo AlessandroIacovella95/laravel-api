@@ -46,6 +46,7 @@ class UpdateProjectRequest extends FormRequest
 
             'technolgies.exists' => 'Le tecnologie inserita non sono valide',
 
+
             'description.required' => 'La descrizione è obbligatoria',
             'description.string' => 'La descrizione deve essere una stringa',
 

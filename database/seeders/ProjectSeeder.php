@@ -21,7 +21,7 @@ class ProjectSeeder extends Seeder
     public function run(Faker $faker)
     {
         $type_ids = Type::all()->pluck('id');
-        $type_ids[] = null;
+        // $type_ids[] = null;
 
         $technology_ids = Technology::all()->pluck('id');
 
@@ -34,7 +34,7 @@ class ProjectSeeder extends Seeder
             $project->slug = Str::slug($project->title);
             $project->save();
 
-            $project->technologies()->attach($faker->randomElements($technology_ids, rand(0, 3)));
+            // $project->technologies()->attach($faker->randomElements($technology_ids, rand(0, 3)));
         }
     }
 }
