@@ -15,21 +15,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::select("id", "type_id", "title", "description", "url")
+        $projects = Project::select("id", "slug", "type_id", "title", "description", "url")
             ->with('type', 'technologies')
             ->paginate(10);
         return response()->json($projects);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * *@return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -40,29 +29,11 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $project = Project::select("id", "slug", "type_id", "title", "description", "url")
+            ->where('id', $id)
+            ->with('type', 'technologies')
+            ->first();
+        return response()->json($project);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * *@return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * *@return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
