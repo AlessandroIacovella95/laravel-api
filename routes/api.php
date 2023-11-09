@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\TypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,6 @@ use App\Http\Controllers\Api\ProjectController;
 // Route::get("/projects", [ProjectController::class, "index"]);
 
 Route::apiResource("projects", ProjectController::class)->only(["index", "show"]);
+Route::get("/projects-by-type/{type_id}", [ProjectController::class, "projectsByType"]);
+
+Route::apiResource("types", TypeController::class)->only(["show"]);
